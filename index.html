@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shifra - Virtual Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <img src="assests/ai.jpg" alt="Shifra" class="hero-img" />
+      <h1>I'm <span class="pink">Shifra</span>, Your <span class="cyan">Virtual Assistant</span></h1>
+      <button onclick="micClicked()" id="mic-button">🎤</button>
+      <p id="status">Tap the mic & talk to me...</p>
+      <div class="history-controls">
+        <button onclick="toggleHistory()" id="history-button">📜 Show History</button>
+        <button onclick="clearHistory()" id="clear-button">🗑️ Clear History</button>
+      </div>
+    </div>
+
+    <div id="popup-history">
+      <div class="popup-header">
+        <span>📄 Conversation History</span>
+        <button onclick="closePopup()" class="close-btn">✖</button>
+      </div>
+      <div id="history-log" class="popup-body"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>

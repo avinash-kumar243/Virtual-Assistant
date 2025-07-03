@@ -1,0 +1,248 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: black;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.container {
+  text-align: center;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+}
+
+.hero-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 25px #00ffff, 0 0 60px #00ffff70;
+  border: 3px solid #00e6e6;
+  background-color: black;
+  animation: fadeIn 1s ease-in-out, glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 25px #00ffff, 0 0 60px #00ffff70;
+  }
+  50% {
+    box-shadow: 0 0 35px #00ffff, 0 0 80px #00ffffa0;
+  }
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.pink {
+  color: #ff4da6;
+}
+
+.cyan {
+  color: #00e6e6;
+}
+
+#mic-button {
+  background: linear-gradient(to right, #00c6ff, #ff4da6);
+  border: none;
+  color: white;
+  font-size: 22px;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 60px;
+  height: 60px;
+}
+
+#mic-button:hover {
+  background: linear-gradient(to right, #007acc, #d63384);
+}
+
+#status {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.history-controls {
+  margin-top: 20px;
+}
+
+.history-controls button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #222;
+  color: #00e6e6;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#popup-history {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  margin-left: 80px;
+  width: 320px;
+  min-height: 100px;
+  max-height: 80vh;
+  background-color: #111;
+  border: 2px solid #00e6e6;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ffff60;
+  display: none;
+  flex-direction: column;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.popup-header {
+  background-color: #00e6e6;
+  padding: 10px 12px;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-body {
+  padding: 10px 14px;
+  overflow-y: auto;
+  flex: 1;
+  font-size: 14px;
+  max-height: 300px;
+}
+
+#history-log  {
+  margin: 6px 0;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.user-line {
+  color: orange;
+}
+
+.bot-line {
+  color: #00ffff;
+}
+
+@media screen and (max-width: 500px) {
+  #popup-history,
+  #history-button {
+    display: none !important;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+  }
+}
+
+@keyframes buttonBurst {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0px transparent;
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00e6e6;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0px transparent;
+  }
+}
+
+@keyframes rippleGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);
+  }
+}
+
+@keyframes fancyPulse {
+  0% {
+    transform: scale(1);
+    background-color: inherit;
+  }
+  50% {
+    transform: scale(1.12);
+    background-color: #00e6e6;
+    color: black;
+  }
+  100% {
+    transform: scale(1);
+    background-color: inherit;
+    color: inherit;
+  }
+}
+
+.burst-effect {
+  animation: buttonBurst 0.5s ease;
+}
+
+.ripple-effect {
+  animation: rippleGlow 0.7s ease-out;
+}
+
+.fancy-pulse {
+  animation: fancyPulse 0.6s ease-in-out;
+}
+
+.history-controls button,
+#mic-button {
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
